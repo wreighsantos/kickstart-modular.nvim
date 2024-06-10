@@ -12,6 +12,8 @@
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-fugitive',
+  'mbbill/undotree',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -22,15 +24,20 @@ require('lazy').setup({
   --  This is equivalent to:
   --    require('Comment').setup({})
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      toggler = { line = '<C-_>', block = '<C-b><C-_>' },
+      opleader = { line = '<C-_>', block = '<C-b><C-_>' },
+    },
+  },
 
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
 
   require 'kickstart/plugins/gitsigns',
 
-  require 'kickstart/plugins/which-key',
+  -- require 'kickstart/plugins/which-key',
 
   require 'kickstart/plugins/telescope',
 
@@ -58,9 +65,9 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

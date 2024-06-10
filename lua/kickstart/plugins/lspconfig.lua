@@ -126,16 +126,6 @@ return {
               end,
             })
           end
-
-          -- The following autocommand is used to enable inlay hints in your
-          -- code, if the language server you are using supports them
-          --
-          -- This may be unwanted, since they displace some of your code
-          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, '[T]oggle Inlay [H]ints')
-          end
         end,
       })
 
@@ -166,7 +156,7 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {},
         --
 
         lua_ls = {
